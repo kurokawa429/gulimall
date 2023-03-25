@@ -1,0 +1,26 @@
+server:
+  port: 88
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: test_rote
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+        - id: qq
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
+  main:
+    web-application-type: reactive
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.56.10:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
